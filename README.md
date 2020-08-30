@@ -11,6 +11,11 @@ The following list is adapted from [Wikipedia](https://en.wikipedia.org/wiki/Lis
     - Stable marriage
       - Gale-Shapley algorithm
     - Pseudorandom number generators
+      - ACORN generator
+      - Blum Blum Shub
+      - Lagged Fibonacci generator
+      - Linear congruential generator
+      - Mersenne Twister
   - Graph algorithms
     - Coloring algorithm
     - Hopcroft-Karp algorithm
@@ -24,9 +29,88 @@ The following list is adapted from [Wikipedia](https://en.wikipedia.org/wiki/Lis
     - Topological sort
       - Note: Finds linear order of nodes based on their dependencies.
     - Graph drawing
+      - Force-based algorithms
+      - Spectral layout
     - Network theory
+      - Network analysis
+        - Link analysis
+          - Girvan-Newman algorithm
+            - Note: Detect communities in complex systems.
+          - Web link analysis
+            - Hyperlink-Induced Topic Search (HITS)
+            - PageRank
+            - TrustRank
+      - Flow networks
+        - Dinic's algorithm
+          - Note: Strongly polynomial algorithm for computing the maximum flow
+            in a flow network.
+        - Edmonds-Karp algorithm
+          - Note: Implementation of Ford-Fulkerson
+        - Ford-Fulkerson algorithm
+          - Note: Computes the maximum flow in a graph.
+        - Karger's algorithm
+          - Note: A Monte Carlo method to compute the minimum cut of a
+            connected graph.
+        - Push-relabel algorithm
+          - Note: Computes a maximum flow in a graph.
     - Routing for graphs
+      - Edmonds' algorithm
+        - Note: Find maximum or minimum branchings
+      - Euclidean minimum spanning tree
+        - Note: Algorithms for computing the minimum spanning tree of a set of
+          points in the plane.
+      - Euclidean shortest path problem
+        - Note: Find the shortest path between two points that does not
+          intersect any obstacle.
+      - Longest path problem
+        - Note: Find a simple path of maximum length in a given graph.
+      - Minimum spanning tree
+        - Boruvka's algorithm
+        - Kruskal's algorithm
+        - Prim's algorithm
+        - Reverse-delete algorithm
+      - Nonblocking minimal spanning switch
+      - Shortest path problem
+        - Bellman-Ford algorithm
+          - Note: Computes shortest paths in a weighted graph, where some of
+            the edge weights may be negative.
+        - Dijkstra's algorithm
+          - Note: Computes shortest paths in a graph with non-negative edge
+            weights.
+        - Floyd-Warshall algorithm
+          - Note: Solves the all pairs shortest path problem in a weighted,
+            directed graph.
+        - Johnson's algorithm
+          - Note: All pairs shortest path algorithm in sparse weighted
+            directed graph.
+      - Transitive closure problem
+        - Note: Find the transitive closure of a given binary relation.
+      - Traveling salesman problem
+        - Christofides algorithm
+        - Nearest neighbour algorithm
+      - Warnsdorff's rule
+        - Note: A heuristic method for solving the Knight's tour problem.
     - Graph search
+      - A*
+        - Note: Special case of best-first search that uses heuristics to
+        improve speed.
+      - B*
+        - Note: A best-first graph search algorithm that finds the least-cost
+          path from a given initial node to any goal node (out of one or more
+          possible goals).
+      - Backtracking
+        - Note: Abandons partial solutions when they are found not to satisfy a
+          complete solution.
+      - Beam search
+        - Note: A heuristic search algorithm that is an optimization of
+          best-first search that reduces its memory requirement.
+      - Beam stack search
+        - Note: Integrates backtracking with beam search.
+      - Best-first search
+        - Note: Traverses a graph in the order of likely importance using a
+          priority queue.
+      - Bidirectional search
+### TODO
     - Subgraphs
   - Sequence algorithms
     - Approximate sequence matching
