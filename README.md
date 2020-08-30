@@ -3,7 +3,26 @@ The following list is adapted from [Wikipedia](https://en.wikipedia.org/wiki/Lis
 - Automated planning
 - Combinatorial algorithms
   - General combinatorial algorithms
+    - Cycle detection
+      - Floyd's Tortoise and Hare
+        - Note: Credited by Donald Knuth.
+      - Brent's algorithm
+      - Gosper's algorithm
+    - Stable marriage
+      - Gale-Shapley algorithm
+    - Pseudorandom number generators
   - Graph algorithms
+    - Coloring algorithm
+    - Hopcroft-Karp algorithm
+      - Note: Convert a bipartite graph to a maximum cardinality matching.
+    - Hungarian algorithm
+      - Note: Find a perfect matching.
+    - Prufer coding
+      - Note: Conversion between a labeled tree and its Prufer sequence.
+    - Tarjan's off-line lowest common ancestors algorithm
+      - Note: Compute lowest common ancestors for pairs of nodes in a tree.
+    - Topological sort
+      - Note: Finds linear order of nodes based on their dependencies.
     - Graph drawing
     - Network theory
     - Routing for graphs
