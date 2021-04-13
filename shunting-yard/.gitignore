@@ -1,0 +1,6 @@
+*
+!.gitignore
+!Makefile
+!*.w
+!*.pdf
+!*.fmt.c
