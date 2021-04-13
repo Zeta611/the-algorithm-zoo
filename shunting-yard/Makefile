@@ -3,19 +3,37 @@ MAIN := $(basename $(shell find ./ -name *.w))
 CC := gcc
 CFLAGS := -O3 -Wall -Wextra -Wpedantic -std=c17
 
+SED := /bin/sed
+CAT := /bin/cat
+CP := /bin/cp
+CLANGFORMAT := /bin/clang-format
+
 PDFTEX := pdftex
 
-all: prog doc
+all: prog doc fmt
 
-prog: $(MAIN) $(MAIN).fmt.c
+fmt: $(MAIN).c
+
+prog: $(MAIN)
 
 $(MAIN): $(MAIN).o
 
-$(MAIN).o: $(MAIN).c
+$(MAIN).o: $(MAIN).orig.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
-$(MAIN).fmt.c: $(MAIN).c
-	sed 's/\/\*[:0-9]*\*\///g;s/^#line.*//g' $< > $@
-	clang-format -i $@
+$(MAIN).c: $(MAIN).orig.c
+	# Remove section-indicating comments & line directives, suppress
+	# duplicate empty lines, and then remove the first and/or the last line
+	# if they are empty.
+	$(SED) 's/\(\/\*[:0-9]*\*\/\|^#line.*\)//g' $< \
+		| $(CAT) -s \
+		| $(SED) '1{/^$$/d};$${/^$$/d}'\
+		> $@
+	$(CLANGFORMAT) -i $@
+
+$(MAIN).orig.c: $(MAIN).w
+	$(CTANGLE) $<
+	$(CP) $(<:w=c) $@
 
 doc: $(MAIN).pdf
 

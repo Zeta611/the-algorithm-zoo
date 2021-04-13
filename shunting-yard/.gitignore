@@ -3,4 +3,5 @@
 !Makefile
 !*.w
 !*.pdf
-!*.fmt.c
+!*.c
+*.orig.c
