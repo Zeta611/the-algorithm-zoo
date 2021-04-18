@@ -258,12 +258,11 @@ bool pop(Stack *s)
 		return false;
 	}
 	if (s->size == 1) {
-		s->size = 0;
 		s->top = NULL;
 	} else {
-		--s->size;
 		--s->top;
 	}
+	--s->size;
 	return true;
 }
 
