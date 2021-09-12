@@ -63,7 +63,7 @@ entering from the right ``arm'' of the {\mc T}-shape to the left ``arm''.
 shunting-yard algorithm we are going to demonstrate.
 \item{$\bullet$} Note that the ``stem'' part is a LIFO (last in, first out)
 structure, which is along the line with our railroad imagery.\smallskip}
-Keep these images in mind as they will help you with a solid understanding of
+Keep these images in mind as they will help you gain a solid understanding of
 the algorithm.
 
 @c
@@ -103,7 +103,7 @@ Each lexical token is represented by |Token|, and the type of an operator
 is represented by |Sym| (which can also represent a parenthesis, for
 simplicity) in our program.
 Note that |Token|s represent the aforementioned numbers, operators,
-parentheses, and additionally, |EOF| for convenience of I/O handling.
+parentheses, and additionally, |EOF| to conveniently handle I/O.
 
 @<Token Implementation@>=
 typedef enum Sym {
@@ -122,19 +122,19 @@ typedef struct Token {
 	enum { EOF_T, SYM_T, NUM_T } type;
 	union {
 		Sym sym;  // |SYM_T|
-		long num; // |NUM_T|
+		int num; // |NUM_T|
 	} u;
 } Token;
 
 @<Token Subroutines@>@;
 
-@ For printing to |stdout|, |SYM_NAMES| stores string representations of
+@ For printing to |stdout|, |SYM_NAMES| stores string representations of the
 symbols.
 @<Symbol Global Variables@>=
 static const char SYM_NAMES[][4] = {"ADD", "SUB", "MUL", "DIV",
 				    "POW", "LPR", "RPR"};
 
-@ |SYM_ASSOC| stores an associativity of each |SYM|.
+@ |SYM_ASSOC| stores the associativity of each |SYM|.
 |LASSOC|, |RASSOC|, and |NASSOC| each indicates left-associativity,
 right-associativity, and non-associativity.
 @<Symbol Global Variables@>=
@@ -148,7 +148,7 @@ static const enum { LASSOC, RASSOC, NASSOC } SYM_ASSOC[] = {@/
 	NASSOC  // |RPR|
 };
 
-@ |SYM_PREC| stores a precedence of each |SYM|.
+@ |SYM_PREC| stores the precedence of each |SYM|.
 |LPR| and |RPR| have $-1$ assigned, which means they are not applicable to a
 precedence rule.
 @<Symbol Global Variables@>=
@@ -170,7 +170,7 @@ Note that it is an error to pass |LPR| or |RPR| as an argument.
 static inline int op_cmp(Sym a, Sym b) { return SYM_PREC[a] - SYM_PREC[b]; }
 
 @ To easily convert a |char| to a corresponding |Sym|, |SYM_TBL| provides a
-mapping between to two.
+mapping between the two.
 @<Symbol Global Variables@>=
 static const Sym SYM_TBL[] = {
     ['+'] = ADD, ['-'] = SUB, ['*'] = MUL, ['/'] = DIV,
@@ -204,8 +204,8 @@ Token gettok()
 
 	// Read a number, including the already-read digit |ch|.
 	ungetc(ch, stdin);
-	long num;
-	if (scanf("%ld", &num) <= 0) { // Unknown case
+	int num;
+	if (scanf("%d", &num) <= 0) { // Unknown case
 		return @[(struct Token){EOF_T}@];
 	}
 	return @[(struct Token){NUM_T, .u.num = num}@];
@@ -308,7 +308,7 @@ while (true) {
 		@<Handle a |SYM_T| token@>@;
 		break;
 	case NUM_T:@/
-		printf("%ld ", tok.u.num);
+		printf("%d ", tok.u.num);
 		break;
 	}
 }

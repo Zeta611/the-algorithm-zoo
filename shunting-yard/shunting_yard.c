@@ -25,7 +25,7 @@ typedef struct Token {
 	enum { EOF_T, SYM_T, NUM_T } type;
 	union {
 		Sym sym;
-		long num;
+		int num;
 	} u;
 } Token;
 
@@ -53,8 +53,8 @@ Token gettok()
 	}
 
 	ungetc(ch, stdin);
-	long num;
-	if (scanf("%ld", &num) <= 0) {
+	int num;
+	if (scanf("%d", &num) <= 0) {
 		return (struct Token){EOF_T};
 	}
 	return (struct Token){NUM_T, .u.num = num};
@@ -150,7 +150,7 @@ bool shunting_yard()
 
 			break;
 		case NUM_T:
-			printf("%ld ", tok.u.num);
+			printf("%d ", tok.u.num);
 			break;
 		}
 	}
