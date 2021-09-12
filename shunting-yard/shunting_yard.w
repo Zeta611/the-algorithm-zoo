@@ -361,7 +361,7 @@ loop.
 You'll see why!
 
 @<Handle an operator@>=
-while (stk.size && *stk.top != LPR && *stk.top != RPR) {
+while (stk.size && *stk.top != LPR) {
 	Sym s = *stk.top;
 	int cmp = op_cmp(tok.u.sym, s);
 	if (cmp < 0) {

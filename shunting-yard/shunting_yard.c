@@ -130,8 +130,7 @@ bool shunting_yard()
 
 			} else {
 
-				while (stk.size && *stk.top != LPR &&
-				       *stk.top != RPR) {
+				while (stk.size && *stk.top != LPR) {
 					Sym s = *stk.top;
 					int cmp = op_cmp(tok.u.sym, s);
 					if (cmp < 0) {
